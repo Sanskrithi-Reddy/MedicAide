@@ -1,4 +1,4 @@
-// Medicare+ demo: mock data kept in localStorage so patient and doctor pages share it.
+// MedicAide demo: mock data kept in localStorage so patient and doctor pages share it.
 const K='mp_state',U='mp_user',DOC={id:1,name:'Dr. Meera Iyer'};
 const seed=()=>({doctors:[
  {id:1,name:'Dr. Meera Iyer',spec:'Cardiology',loc:'Adyar, Chennai',slots:['10:30','11:00','11:30','14:00']},
