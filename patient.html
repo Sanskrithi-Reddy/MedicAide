@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><title>Patient dashboard | Medicare+</title></head><body data-page="patient">
+<header class="top"><a class="logo" href="index.html"><b>+</b> Medicare</a><nav><span id="who"></span><a id="logout" href="login.html">Log out</a></nav></header>
+<div class="app"><nav class="side" aria-label="Dashboard"><a href="#find">Find a doctor</a><a href="#appts">Appointments</a><a href="#rx">Prescriptions</a><a href="#docs">My records</a><button class="reset" id="reset">Reset demo data</button></nav>
+<main>
+<section id="find"><h2>Find a doctor</h2>
+<form class="panel filters" onsubmit="return false"><label>Specialty<select id="spec"><option>Any</option><option>Cardiology</option><option>Dermatology</option><option>Pediatrics</option></select></label>
+<label>Location<input id="loc" type="text" placeholder="City or area"></label>
+<label>Date<input id="date" type="date"></label><span></span><span></span></form>
+<div id="banner"></div><div class="cards" id="docs"></div></section>
+<section id="appts"><h2>Appointments</h2><div class="panel"><table><thead><tr><th>Doctor</th><th>When</th><th></th></tr></thead><tbody id="appt-body"></tbody></table></div></section>
+<section id="rx"><h2>Diagnosis and prescription</h2><div id="visits" class="cards"></div></section>
+<section id="docs-sec"><h2>My medical records</h2><div class="two"><div class="drop"><p><strong>Upload a document</strong></p><p>Reports, scans, past prescriptions</p><input id="file" type="file" aria-label="Choose file"></div>
+<div class="panel"><table><thead><tr><th>File</th><th>Added</th></tr></thead><tbody id="rec-body"></tbody></table></div></div></section>
+</main></div><script src="app.js"></script></body></html>
