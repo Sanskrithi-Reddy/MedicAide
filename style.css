@@ -1,80 +1,584 @@
-:root{--ink:#12263A;--muted:#5B6F80;--teal:#0E7C86;--teal-d:#0A5C64;--tint:#E8F3F5;--line:#D5E2E6;--amber:#F2B134;--bg:#F7FAFB;--white:#fff;--red:#C0392B}
-*{box-sizing:border-box;margin:0}
-body{font-family:'Figtree',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;letter-spacing:-.02em}
-h2{font-size:1.35rem;margin-bottom:.9rem}h3{font-size:1.05rem}
-p.sub{color:var(--muted)}
-.logo{font-weight:800;font-size:1.3rem}.logo b{color:var(--teal);font-size:1.5rem}
-.top{display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;background:var(--white);border-bottom:1px solid var(--line)}
-.top nav{display:flex;gap:1.5rem;align-items:center}
-.btn{display:inline-block;padding:.65rem 1.2rem;border-radius:8px;font-weight:700;border:2px solid var(--teal);background:var(--teal);color:#fff;cursor:pointer;font:inherit;font-weight:700}
-.btn:hover{background:var(--teal-d)}
-.btn.alt{background:transparent;color:var(--teal)}.btn.alt:hover{background:var(--tint)}
-.btn.sm{padding:.35rem .8rem;font-size:.9rem}
-/* landing */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;padding:5rem 5vw;align-items:center}
-.hero p{margin:1.2rem 0 2rem;max-width:46ch;font-size:1.1rem;color:var(--muted)}
-.hero .cta{display:flex;gap:1rem;flex-wrap:wrap}
-.pulse{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.5rem}
-.pulse .row{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid var(--line)}
-.pulse .row:last-child{border:0}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:3rem 5vw 5rem}
-.split section{background:var(--white);border-top:5px solid var(--teal);padding:2rem;border-radius:0 0 12px 12px}
-.split section.dr{border-color:var(--amber)}
-.split ul{padding-left:1.2rem;margin-top:1rem;color:var(--muted)}.split li{margin:.4rem 0}
-footer{padding:2rem 5vw;color:var(--muted);border-top:1px solid var(--line);font-size:.9rem}
-/* auth */
-.auth{max-width:440px;margin:3rem auto;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:2rem}
-.auth input[type=radio]{position:absolute;opacity:0}
-.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--tint);border-radius:10px;padding:4px;margin:1rem 0}
-.seg label{text-align:center;padding:.5rem;border-radius:7px;cursor:pointer;font-weight:600}
-.seg+.seg{margin-top:0}
-#r-patient:checked~.role label[for=r-patient],#r-doctor:checked~.role label[for=r-doctor],#m-login:checked~.mode label[for=m-login],#m-signup:checked~.mode label[for=m-signup]{background:var(--white);box-shadow:0 1px 3px #0002;color:var(--teal-d)}
-#r-patient:focus-visible~.role label[for=r-patient],#r-doctor:focus-visible~.role label[for=r-doctor],#m-login:focus-visible~.mode label[for=m-login],#m-signup:focus-visible~.mode label[for=m-signup]{outline:3px solid var(--amber)}
-.field{display:block;margin-bottom:1rem;font-weight:600;font-size:.95rem}
-input,select,textarea{width:100%;margin-top:.3rem;padding:.65rem .8rem;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--ink)}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
-.signup-only,.doctor-only{display:none}
-.auth:has(#m-signup:checked) .signup-only{display:block}
-.auth:has(#m-signup:checked):has(#r-doctor:checked) .doctor-only{display:block}
-.auth:has(#m-signup:checked) .login-label{display:none}
-.auth .btn{width:100%;margin-top:.5rem}
-/* dashboard */
-.app{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 62px)}
-.side{background:var(--white);border-right:1px solid var(--line);padding:1.5rem 1rem;display:flex;flex-direction:column;gap:.3rem}
-.side a{padding:.6rem .9rem;border-radius:8px;font-weight:600;color:var(--muted)}
-.side a:hover,.side a:first-child{background:var(--tint);color:var(--teal-d)}
-main{padding:2rem 3vw;max-width:1100px}
-main>section{margin-bottom:2.5rem;scroll-margin-top:1rem}
-.panel{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:1.2rem}
-.filters{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:.8rem;align-items:end;margin-bottom:1rem}
-.filters input,.filters select{margin:0}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
-.doc{display:flex;flex-direction:column;gap:.4rem}
-.doc small,.muted{color:var(--muted)}
-.slots{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}
-.slot{padding:.25rem .6rem;border:1px solid var(--teal);color:var(--teal-d);border-radius:6px;font-size:.85rem;font-weight:600}
-.slot.off{border-color:var(--line);color:#9AABB7;text-decoration:line-through}
-table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:.7rem;border-bottom:1px solid var(--line);font-size:.95rem}
-th{color:var(--muted);font-weight:600}
-.tag{padding:.15rem .6rem;border-radius:99px;font-size:.8rem;font-weight:700;background:var(--tint);color:var(--teal-d)}
-.tag.warn{background:#FDF1D3;color:#7A5600}
-.rx{border-left:5px solid var(--amber)}
-.rx li{list-style:none;display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px dashed var(--line)}
-.drop{border:2px dashed var(--teal);border-radius:12px;padding:1.5rem;text-align:center;background:var(--tint);color:var(--teal-d)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-@media(max-width:800px){.hero,.split,.two{grid-template-columns:1fr}.app{grid-template-columns:1fr}.side{flex-direction:row;overflow-x:auto;border:0;border-bottom:1px solid var(--line)}.filters{grid-template-columns:1fr 1fr}}
-@media(prefers-reduced-motion:no-preference){.hero .pulse{animation:in .6s ease-out}@keyframes in{from{opacity:0;transform:translateY(12px)}}}
-/* demo additions */
-button.slot{background:transparent;font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}
-button.slot:hover:not(:disabled){background:var(--tint)}
-button.slot:disabled{border-color:var(--line);color:#9AABB7;text-decoration:line-through;cursor:not-allowed}
-.toast{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--ink);color:#fff;padding:.9rem 1.2rem;border-radius:10px;max-width:320px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;z-index:9}
-.toast.show{opacity:1;transform:none}
-.banner{background:#FDF1D3;border:1px solid var(--amber);padding:.7rem 1rem;border-radius:8px;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.empty{color:var(--muted)}
-.reset{margin-top:auto;background:none;border:0;color:var(--muted);cursor:pointer;font:inherit;text-align:left;padding:.6rem .9rem}
-.row-actions{display:flex;gap:.4rem}
+/* ---------- general stuff ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Figtree', Arial, sans-serif;
+    color: #12263A;
+    background-color: #F7FAFB;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 17px;
+}
+
+.sub {
+    color: #5B6F80;
+}
+
+.muted {
+    color: #5B6F80;
+}
+
+.empty {
+    color: #5B6F80;
+}
+
+/* outline so keyboard users can see where they are */
+:focus-visible {
+    outline: 3px solid #F2B134;
+    outline-offset: 2px;
+}
+
+
+/* ---------- header at the top ---------- */
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 5vw;
+    background-color: white;
+    border-bottom: 1px solid #D5E2E6;
+}
+
+.top nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 21px;
+}
+
+.logo b {
+    color: #0E7C86;
+    font-size: 24px;
+}
+
+
+/* ---------- buttons ---------- */
+
+.btn {
+    display: inline-block;
+    padding: 10px 19px;
+    border: 2px solid #0E7C86;
+    border-radius: 8px;
+    background-color: #0E7C86;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0A5C64;
+}
+
+/* outline version of the button */
+.btn.alt {
+    background-color: transparent;
+    color: #0E7C86;
+}
+
+.btn.alt:hover {
+    background-color: #E8F3F5;
+}
+
+/* small version */
+.btn.sm {
+    padding: 5px 13px;
+    font-size: 14px;
+}
+
+
+/* ---------- landing page (index.html) ---------- */
+
+.hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+    padding: 80px 5vw;
+}
+
+.hero p {
+    margin: 19px 0 32px 0;
+    max-width: 460px;
+    font-size: 18px;
+    color: #5B6F80;
+}
+
+.hero .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* the white box on the right side of the hero */
+.pulse {
+    background-color: white;
+    border: 1px solid #D5E2E6;
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.pulse .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 0;
+    border-bottom: 1px solid #D5E2E6;
+}
+
+.pulse .row:last-child {
+    border-bottom: none;
+}
+
+/* the two boxes: patients and doctors */
+.split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 48px 5vw 80px 5vw;
+}
+
+.split section {
+    background-color: white;
+    border-top: 5px solid #0E7C86;
+    border-radius: 0 0 12px 12px;
+    padding: 32px;
+}
+
+.split section.dr {
+    border-top-color: #F2B134;
+}
+
+.split ul {
+    margin-top: 16px;
+    padding-left: 20px;
+    color: #5B6F80;
+}
+
+.split li {
+    margin: 6px 0;
+}
+
+footer {
+    padding: 32px 5vw;
+    border-top: 1px solid #D5E2E6;
+    font-size: 14px;
+    color: #5B6F80;
+}
+
+
+/* ---------- login page ---------- */
+
+.auth {
+    max-width: 440px;
+    margin: 48px auto;
+    padding: 32px;
+    background-color: white;
+    border: 1px solid #D5E2E6;
+    border-radius: 16px;
+}
+
+/* the radio buttons are hidden, we click the labels instead */
+.auth input[type=radio] {
+    position: absolute;
+    opacity: 0;
+}
+
+/* the toggle switches (Log in / Sign up and Patient / Doctor) */
+.seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 16px 0;
+    padding: 4px;
+    background-color: #E8F3F5;
+    border-radius: 10px;
+}
+
+.seg label {
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.seg + .seg {
+    margin-top: 0;
+}
+
+/* highlight the label of whichever radio is selected */
+#r-patient:checked ~ .role label[for=r-patient],
+#r-doctor:checked ~ .role label[for=r-doctor],
+#m-login:checked ~ .mode label[for=m-login],
+#m-signup:checked ~ .mode label[for=m-signup] {
+    background-color: white;
+    color: #0A5C64;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* outline when using the keyboard */
+#r-patient:focus-visible ~ .role label[for=r-patient],
+#r-doctor:focus-visible ~ .role label[for=r-doctor],
+#m-login:focus-visible ~ .mode label[for=m-login],
+#m-signup:focus-visible ~ .mode label[for=m-signup] {
+    outline: 3px solid #F2B134;
+}
+
+/* these fields are hidden at first */
+.signup-only {
+    display: none;
+}
+
+.doctor-only {
+    display: none;
+}
+
+/* show the name field when Sign up is selected */
+.auth:has(#m-signup:checked) .signup-only {
+    display: block;
+}
+
+/* show the doctor fields only if Sign up AND Doctor are selected */
+.auth:has(#m-signup:checked):has(#r-doctor:checked) .doctor-only {
+    display: block;
+}
+
+.auth .btn {
+    width: 100%;
+    margin-top: 8px;
+}
+
+
+/* ---------- forms ---------- */
+
+.field {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px 13px;
+    border: 1px solid #D5E2E6;
+    border-radius: 8px;
+    background-color: white;
+    color: #12263A;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #0E7C86;
+    border-color: #0E7C86;
+}
+
+
+/* ---------- dashboard layout (patient and doctor) ---------- */
+
+.app {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    min-height: 100vh;
+}
+
+/* sidebar on the left */
+.side {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 24px 16px;
+    background-color: white;
+    border-right: 1px solid #D5E2E6;
+}
+
+.side a {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #5B6F80;
+}
+
+.side a:hover {
+    background-color: #E8F3F5;
+    color: #0A5C64;
+}
+
+.side a:first-child {
+    background-color: #E8F3F5;
+    color: #0A5C64;
+}
+
+/* reset demo data button at the bottom of the sidebar */
+.reset {
+    margin-top: auto;
+    padding: 10px 14px;
+    border: none;
+    background: none;
+    text-align: left;
+    font-family: inherit;
+    font-size: 16px;
+    color: #5B6F80;
+    cursor: pointer;
+}
+
+main {
+    max-width: 1100px;
+    padding: 32px 3vw;
+}
+
+main > section {
+    margin-bottom: 40px;
+}
+
+/* white box used all over the dashboards */
+.panel {
+    background-color: white;
+    border: 1px solid #D5E2E6;
+    border-radius: 12px;
+    padding: 19px;
+}
+
+.two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+
+/* ---------- search filters + doctor cards ---------- */
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 13px;
+    align-items: end;
+    margin-bottom: 16px;
+}
+
+.filters input,
+.filters select {
+    margin: 0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.doc {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.doc small {
+    color: #5B6F80;
+}
+
+/* the time slots */
+.slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.slot {
+    padding: 4px 10px;
+    border: 1px solid #0E7C86;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0A5C64;
+}
+
+/* the slots are buttons in the demo */
+button.slot {
+    background-color: transparent;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button.slot:hover {
+    background-color: #E8F3F5;
+}
+
+/* already booked slots */
+button.slot:disabled {
+    border-color: #D5E2E6;
+    color: #9AABB7;
+    text-decoration: line-through;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+/* yellow message when rescheduling */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 11px 16px;
+    background-color: #FDF1D3;
+    border: 1px solid #F2B134;
+    border-radius: 8px;
+}
+
+
+/* ---------- tables ---------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 11px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #D5E2E6;
+}
+
+th {
+    font-weight: 600;
+    color: #5B6F80;
+}
+
+.row-actions {
+    display: flex;
+    gap: 6px;
+}
+
+
+/* ---------- small labels (tags) ---------- */
+
+.tag {
+    padding: 2px 10px;
+    border-radius: 20px;
+    background-color: #E8F3F5;
+    color: #0A5C64;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.tag.warn {
+    background-color: #FDF1D3;
+    color: #7A5600;
+}
+
+
+/* ---------- prescription card ---------- */
+
+.rx {
+    border-left: 5px solid #F2B134;
+}
+
+.rx li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    list-style: none;
+    border-bottom: 1px dashed #D5E2E6;
+}
+
+/* upload box for medical documents */
+.drop {
+    padding: 24px;
+    text-align: center;
+    background-color: #E8F3F5;
+    color: #0A5C64;
+    border: 2px dashed #0E7C86;
+    border-radius: 12px;
+}
+
+
+/* ---------- popup message (toast) ---------- */
+
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    max-width: 320px;
+    padding: 14px 19px;
+    background-color: #12263A;
+    color: white;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.25s;
+    pointer-events: none;
+    z-index: 9;
+}
+
+/* js adds this class to make it appear */
+.toast.show {
+    opacity: 1;
+    transform: none;
+}
+
+
+/* ---------- phone / small screen ---------- */
+
+@media (max-width: 800px) {
+
+    .hero,
+    .split,
+    .two {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .app {
+        grid-template-columns: 1fr;
+    }
+
+    .side {
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid #D5E2E6;
+    }
+
+    .filters {
+        grid-template-columns: 1fr 1fr;
+    }
+}
