@@ -1,16 +1,88 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><title>Log in | MedicAide</title></head><body data-page="login">
-<header class="top"><a class="logo" href="index.html"><b>+</b> MedicAide</a></header>
-<form class="auth" action="#">
-<input type="radio" name="mode" id="m-login" checked><input type="radio" name="mode" id="m-signup">
-<input type="radio" name="role" id="r-patient" checked><input type="radio" name="role" id="r-doctor">
-<h2>Welcome to MedicAide</h2>
-<div class="seg mode"><label for="m-login">Log in</label><label for="m-signup">Sign up</label></div>
-<p class="muted">I am a</p>
-<div class="seg role"><label for="r-patient">Patient</label><label for="r-doctor">Doctor</label></div>
-<label class="field signup-only">Full name<input type="text" autocomplete="name"></label>
-<label class="field">Email<input type="email" autocomplete="email" required></label>
-<label class="field">Password<input type="password" autocomplete="current-password" required></label>
-<label class="field doctor-only">Specialty<select><option>Cardiology</option><option>Dermatology</option><option>General medicine</option><option>Pediatrics</option></select></label>
-<label class="field doctor-only">Medical licence number<input type="text"></label>
-<label class="field doctor-only">Clinic location<input type="text"></label>
-<button class="btn" type="submit">Continue</button></form><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Log in | MedicAide</title>
+</head>
+
+<body data-page="login">
+
+  <header class="top">
+    <a class="logo" href="index.html"><b>+</b> MedicAide</a>
+  </header>
+
+  <form class="auth" action="#">
+
+    <!-- Hidden radio buttons: they store the user's choices -->
+    <input type="radio" name="mode" id="m-login" checked>
+    <input type="radio" name="mode" id="m-signup">
+
+    <input type="radio" name="role" id="r-patient" checked>
+    <input type="radio" name="role" id="r-doctor">
+
+    <h2>Welcome to MedicAide</h2>
+
+    <!-- Log in / Sign up switch -->
+    <div class="seg mode">
+      <label for="m-login">Log in</label>
+      <label for="m-signup">Sign up</label>
+    </div>
+
+    <!-- Patient / Doctor switch -->
+    <p class="muted">I am a</p>
+    <div class="seg role">
+      <label for="r-patient">Patient</label>
+      <label for="r-doctor">Doctor</label>
+    </div>
+
+    <!-- Shown only when "Sign up" is selected -->
+    <label class="field signup-only">
+      Full name
+      <input type="text" autocomplete="name">
+    </label>
+
+    <!-- Always shown -->
+    <label class="field">
+      Email
+      <input type="email" autocomplete="email" required>
+    </label>
+
+    <label class="field">
+      Password
+      <input type="password" autocomplete="current-password" required>
+    </label>
+
+    <!-- Shown only for "Sign up" + "Doctor" -->
+    <label class="field doctor-only">
+      Specialty
+      <select>
+        <option>Cardiology</option>
+        <option>Dermatology</option>
+        <option>General medicine</option>
+        <option>Pediatrics</option>
+      </select>
+    </label>
+
+    <label class="field doctor-only">
+      Medical licence number
+      <input type="text">
+    </label>
+
+    <label class="field doctor-only">
+      Clinic location
+      <input type="text">
+    </label>
+
+    <button class="btn" type="submit">Continue</button>
+
+  </form>
+
+  <script src="app.js"></script>
+</body>
