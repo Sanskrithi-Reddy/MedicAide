@@ -1,13 +1,128 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"><title>Doctor dashboard | MedicAide</title></head><body data-page="doctor">
-<header class="top"><a class="logo" href="index.html"><b>+</b> MedicAide</a><nav><span>Dr. Meera Iyer</span><a id="logout" href="login.html">Log out</a></nav></header>
-<div class="app"><nav class="side" aria-label="Dashboard"><a href="#schedule">My schedule</a><a href="#upload">Diagnosis and prescription</a><a href="#history">Patient history</a><button class="reset" id="reset">Reset demo data</button></nav>
-<main>
-<section id="schedule"><h2>My schedule</h2><div class="panel"><table><thead><tr><th>When</th><th>Patient</th><th></th></tr></thead><tbody id="sched"></tbody></table></div><p class="muted">New bookings appear here automatically.</p></section>
-<section id="upload"><h2>Add diagnosis and prescription</h2>
-<form class="panel" id="rxform"><label class="field">Patient<select id="pt" required></select></label>
-<label class="field">Diagnosis<textarea id="dx" rows="3" required></textarea></label>
-<div class="two"><label class="field">Medicine<input id="med" type="text" placeholder="e.g. Amoxicillin 500 mg" required></label><label class="field">Daily reminder time<input id="mt" type="time" required></label></div>
-<label class="field">Instructions<input id="note" type="text" placeholder="e.g. After meals, for 5 days"></label>
-<button class="btn" type="submit">Save and send to patient</button></form></section>
-<section id="history"><h2>Patient history</h2><div class="panel"><label class="field">Patient<select id="hp"></select></label><div id="hist"></div></div></section>
-</main></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <title>Doctor dashboard | MedicAide</title>
+</head>
+
+<body data-page="doctor">
+
+  <!-- ===== Top bar ===== -->
+  <header class="top">
+    <a class="logo" href="index.html"><b>+</b> MedicAide</a>
+
+    <nav>
+      <span>Dr. Meera Iyer</span>
+      <a id="logout" href="login.html">Log out</a>
+    </nav>
+  </header>
+
+
+  <div class="app">
+
+    <!-- ===== Sidebar ===== -->
+    <nav class="side" aria-label="Dashboard">
+      <a href="#schedule">My schedule</a>
+      <a href="#upload">Diagnosis and prescription</a>
+      <a href="#history">Patient history</a>
+
+      <button class="reset" id="reset">Reset demo data</button>
+    </nav>
+
+
+    <main>
+
+      <!-- ===== 1. Schedule ===== -->
+      <section id="schedule">
+        <h2>My schedule</h2>
+
+        <div class="panel">
+          <table>
+            <thead>
+              <tr>
+                <th>When</th>
+                <th>Patient</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <!-- Rows are filled in by app.js -->
+            <tbody id="sched"></tbody>
+          </table>
+        </div>
+
+        <p class="muted">New bookings appear here automatically.</p>
+      </section>
+
+
+      <!-- ===== 2. Diagnosis and prescription form ===== -->
+      <section id="upload">
+        <h2>Add diagnosis and prescription</h2>
+
+        <form class="panel" id="rxform">
+
+          <label class="field">
+            Patient
+            <select id="pt" required></select>
+          </label>
+
+          <label class="field">
+            Diagnosis
+            <textarea id="dx" rows="3" required></textarea>
+          </label>
+
+          <div class="two">
+            <label class="field">
+              Medicine
+              <input id="med" type="text" placeholder="e.g. Amoxicillin 500 mg" required>
+            </label>
+
+            <label class="field">
+              Daily reminder time
+              <input id="mt" type="time" required>
+            </label>
+          </div>
+
+          <label class="field">
+            Instructions
+            <input id="note" type="text" placeholder="e.g. After meals, for 5 days">
+          </label>
+
+          <button class="btn" type="submit">Save and send to patient</button>
+
+        </form>
+      </section>
+
+
+      <!-- ===== 3. Patient history ===== -->
+      <section id="history">
+        <h2>Patient history</h2>
+
+        <div class="panel">
+
+          <label class="field">
+            Patient
+            <select id="hp"></select>
+          </label>
+
+          <!-- History table is filled in by app.js -->
+          <div id="hist"></div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
